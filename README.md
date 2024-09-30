@@ -1,5 +1,5 @@
 # Math
-This repository is a collection of math notes written in Latex. Hoping to look back on this in the future to refresh me on core concepts. 
+This repository is a collection of my notes from math classes at Columbia. Hoping to look back on this in the future to refresh me on core concepts. 
 
 Classes included (so far):
 
