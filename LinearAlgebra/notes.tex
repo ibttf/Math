@@ -1,0 +1,100 @@
+\documentclass[12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{latexsym,amsfonts,amssymb,amsthm,amsmath}
+\usepackage{geometry}
+\usepackage{tcolorbox}  % For boxed environments
+\usepackage{xcolor}     % For text colors
+\usepackage[dvipsnames]{xcolor}
+\geometry{margin=1in}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1em}
+
+% Custom command for solutions
+\newcommand{\solution}{\noindent\textbf{Solution:}\par\nopagebreak}
+
+% Custom boxed environment for definitions
+\newtcolorbox{definitionbox}[1][]{
+    colback=blue!5!white,
+    colframe=blue!75!black,
+    fonttitle=\bfseries,
+    title=Definition,
+    #1
+}
+
+% Custom boxed environment for key concepts in solutions
+\newtcolorbox{keyconceptbox}[1][]{
+    colback=red!5!white,
+    colframe=red!75!black,
+    fonttitle=\bfseries,
+    title=Key Concept,
+    #1
+}
+
+% Custom boxed environment for a black note
+\newtcolorbox{note}[1][]{colback=white, colframe=black, title=Note, fonttitle=\bfseries, #1}
+
+
+
+
+% Custom commands for difficulty levels with practice quetsions
+\newcommand{\easy}[1]{\noindent\textcolor{OliveGreen}{\textbf{EASY:}} #1 \par}
+\newcommand{\medium}[1]{\noindent\textcolor{orange}{\textbf{MEDIUM:}} #1 \par}
+\newcommand{\hard}[1]{\noindent\textcolor{red}{\textbf{HARD:}} #1 \par}
+
+
+% Custom command for a definition which will be bolded
+\newcommand{\definition}[2]{
+  \noindent\textbf{#1:} #2
+}
+
+\title{Linear Algebra \\ MATH 1201}
+\author{Roy Lee}
+\date{}  % No date
+
+\begin{document}
+
+\maketitle
+
+\section{Linear Equations in Linear Algebra}
+
+\subsection*{1.1 Systems of Linear Equations}
+
+\definition{Linear equation}{An equation of the form $a_1x_1 + a_2x_2 + \cdots + a_nx_n = b$ where $a_1, a_2, \ldots, a_n, b$ are constants and $x_1, x_2, \ldots, x_n$ are variables.}
+
+\definition{Solution set}{All possible solutions to a system of linear equations.}
+
+\begin{definitionbox}
+    \textbf{Types of solutions:} There are only three types of solutions a system of linear equations can have.
+    \begin{itemize}
+        \item No solution
+        \item Exactly one solution
+        \item Infinitely many solutions
+    \end{itemize}
+\end{definitionbox}
+
+
+
+If we have a system of linear equations that looks like:
+\begin{aligned}
+\[
+    x_1 & - 2x_2 & + x_3 & = 0 \\
+     & x_2 & + 2x_3 & = 3 \\
+    3x_1 & + x_2 & + 3x_3 & = 3
+
+\]
+\end{aligned}
+\definition{Coefficient matrix}{Way of writing a system of linear equations}
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

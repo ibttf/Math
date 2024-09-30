@@ -1,0 +1,202 @@
+\documentclass[12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{latexsym,amsfonts,amssymb,amsthm,amsmath}
+\usepackage{geometry}
+\usepackage{tcolorbox}  % For boxed environments
+\usepackage{xcolor}     % For text colors
+\usepackage[dvipsnames]{xcolor}
+\geometry{margin=1in}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1em}
+
+% Custom command for solutions
+\newcommand{\solution}{\noindent\textbf{Solution:}\par\nopagebreak}
+
+% Custom boxed environment for definitions
+\newtcolorbox{definitionbox}[1][]{
+    colback=blue!5!white,
+    colframe=blue!75!black,
+    fonttitle=\bfseries,
+    title=Definition,
+    #1
+}
+
+% Custom boxed environment for key concepts
+\newtcolorbox{keyconceptbox}[1][]{
+    colback=red!5!white,
+    colframe=red!75!black,
+    fonttitle=\bfseries,
+    title=Key Concept,
+    #1
+}
+
+% Custom commands for difficulty levels
+\newcommand{\easy}[1]{\noindent\textcolor{OliveGreen}{\textbf{EASY:}} #1 \par}
+\newcommand{\medium}[1]{\noindent\textcolor{orange}{\textbf{MEDIUM:}} #1 \par}
+\newcommand{\hard}[1]{\noindent\textcolor{red}{\textbf{HARD:}} #1 \par}
+
+\title{Probability Theory \\ STAT 4203}
+\author{Roy Lee}
+\date{}  % No date
+
+\begin{document}
+
+\maketitle
+
+\section{Chapter 1}
+
+\subsection*{1.6 Finite Sample Spaces}
+
+\easy{If two balanced dice are rolled, what is the probability that the sum of the two numbers that appear will be odd?}
+
+\solution
+only two cases:
+\[
+\text{even} + \text{odd} \quad \text{or} \quad \text{odd} + \text{even}.
+\]
+Thus, the probability is \( P(\text{odd sum}) = \frac{1}{2} \).
+
+\easy{If three fair coins are tossed, what is the probability that all three faces will be the same?}
+
+\solution
+There are only two favorable cases: HHH or TTT. Out of \(2^3 = 8\) possible outcomes, the probability is:
+\[
+P = \frac{2}{8} = \frac{1}{4}.
+\]
+
+\subsection*{1.7 Counting Methods}
+
+% \begin{definitionbox}
+%     \textbf{Permutations:} For questions that say "without replacement" or where order matters. If you choose \( k \) cards from \( n \), then you have 
+%     \[
+%     (n)(n-1)(n-2)...(n-k+1)
+%     \] 
+%     options, or just 
+%     \[
+%     P_{n,k}.
+%     \]
+% \end{definitionbox}
+
+\easy{Suppose that a club consists of 25 members and that a president and a secretary are to be chosen from the membership. How many ways can we pick 2 people from 25 where order matters?}
+
+\solution
+This is 25 pick 2 with replacement \( P_{25,2} = 25 \times 24 \).
+
+\easy{Consider a box that contains \( n \) balls numbered 1, ..., \( n \). First, one ball is selected at random from the box and its number is noted. This ball is then put back in the box and another ball is selected (it is possible that the same ball will be selected again). Determine the probability of the event \( E \) that each of the \( k \) balls that are selected will have a different number.}
+\solution
+So we know that it gets replaced. Each ball has an equal chance of being any of n numbers. If you pick k back to back, the total events is:
+\(n^k\). The probability that each of the k balls has a DIFFERENT number, or the number of favorable outcomes, is gonna be:
+\[
+n  * (n-1)  * (n-2) ... (n-k+1)\]
+thus, the probability is:
+\[
+\frac{
+    n  * (n-1)  * (n-2) ... (n-k+1)
+}{
+    n^k
+}\]
+
+\easy{Determine the probability \( p \) that at least two people in a group of \( k \) people will have the same birthday, that is, will have been born on the same day of the same month but not necessarily in the same year.}
+\solution
+Find 1-\textit{P(no one has the same birthday)}. This can be done by permutations. For each of k people, we'll say that the first one has n options, the next has n-1, and so on and so forth until the last guy has n-k+1 options. thus, the total sample size is: \[365^k\] while the total favorable outcomes is: \[P_{365,k}\]giving us \[P(\geq \textit{two overlapping birthdays})=  1-\frac{P_{365,k}}{365^k}\]
+
+
+\easy{
+    If 12 balls are thrown at random into 20 boxes, what
+    is the probability that no box will receive more than one
+    ball?
+}
+\solution
+
+The first ball has 20 options to be thrown into. The next has 19, and so on and so forth.
+Thus, the total number of favorable outcomes is:
+\[
+P_{20,12}
+\]
+and the total number of outcomes is:
+\[
+20^{12}
+\]
+thus, the probability is:
+\[
+\frac{P_{20,12}}{20^{12}}
+\]
+
+\easy{
+    An elevator in a building starts with ﬁve passengers
+and stops at seven ﬂoors. If every passenger is equally
+likely to get off at each ﬂoor and all the passengers leave
+independently of each other, what is the probability that
+no two passengers will get off at the same ﬂoor?
+}
+
+\solution
+
+First person has 7 options, the next has 6, and so on until 3.
+Thus, the total number of favorable outcomes is:
+\[
+P_{7,5}
+\]
+and the total number of outcomes is:
+\[
+7^5
+\]
+thus, the probability is:
+\[
+\frac{P_{7,5}}{7^5}
+\]
+
+
+\easy{
+    Suppose that three runners from team A and three run-
+ners from team B participate in a race. If all six runners
+have equal ability and there are no ties, what is the prob-
+ability that the three runners from team A will ﬁnish ﬁrst,
+second, and third, and the three runners from team B will
+ﬁnish fourth, ﬁfth, and sixth?
+}
+
+\solution
+So remember that it's always P(favorable)/P(total). Favorable outcomes breaks down into the number of ways
+we can have the three runners from A come in the first three positions. And then the number of ways we can split up the runners from B
+so we have 
+\[
+(A1,A2,A3) (B4,B5,B6)
+\]
+and we know that there are 3! ways to order runners from A and 3! ways to order runners from b.
+Hence, total favorable outcomes is 
+\[
+3!*3!
+\]
+and the total number of outcomes is
+\[
+6!
+\]
+thus, the probability is:
+\[
+\frac{3!*3!}{6!}
+\]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
