@@ -1,3 +1,4 @@
+
 \documentclass[12pt]{article}
 
 \usepackage[utf8]{inputenc}
@@ -65,34 +66,176 @@
 
 \definition{Solution set}{All possible solutions to a system of linear equations.}
 
+
+If we have a system of linear equations that looks like:
+\[
+\begin{aligned}
+    x_1 & - 2x_2 & + x_3 & = 0 \\
+        & \phantom{x_1}x_2 & + 2x_3 & = 3 \\
+    3x_1 & + x_2 & + 3x_3 & = 3
+\end{aligned}
+\]
+
+\definition{Coefficient matrix}{Rewrite system of linear equations as just coefficients}
+\[
+\begin{bmatrix}
+    1 & -2 & 1 \\
+    0 & 1 & 2 \\
+    3 & 1 & 3
+\end{bmatrix}
+\]
+
+\definition {Augmented matrix}{Rewrite system as matrix with coefficients and constants}
+\[
+\begin{bmatrix}
+    1 & -2 & 1 & \vert & 0 \\
+    0 & 1 & 2 & \vert & 3 \\
+    3 & 1 & 3 & \vert & 3
+\end{bmatrix}
+\]
+
+
+\definition{Row equivalent}{Two matrices are row equivalent if one can be obtained from the other by a sequence of elementary row operations.}
+
+\definition{Consistent}{A system of linear equations is consistent if it has one or infinitely many solutions.}
+
+\begin{keyconceptbox}
+    \textbf{Inconsistent system:}
+    A system of linear equations is inconsistent if the RREF of its augmented matrix has a row with $\begin{bmatrix}0 & 0 & 0 & \cdots & 0 & \vert &  b \end{bmatrix}$ where $b \neq 0$.
+\end{keyconceptbox}
+
+\subsection*{1.2 Row Reduction and Echelon Forms}
+
 \begin{definitionbox}
-    \textbf{Types of solutions:} There are only three types of solutions a system of linear equations can have.
+    \textbf{Properties of a matrix in echelon form (or reduced echelon form)}
     \begin{itemize}
-        \item No solution
-        \item Exactly one solution
-        \item Infinitely many solutions
+        \item All nonzero rows are above any rows of all zeros.
+        \item The leading entry of each nonzero row occurs to the right of the leading entry of the previous row.
+        \item The leading entry in any nonzero row is 1.
+        \item All entries in the column below the leading 1 are zeros.
     \end{itemize}
+    Example:
+    \[
+    \begin{bmatrix}
+        1 & 2 & 0 & 3 \\
+        0 & 1 & 3 & 4 \\
+        0 & 0 & 1 & 5
+    \end{bmatrix}
+    \]
 \end{definitionbox}
 
 
 
-If we have a system of linear equations that looks like:
-\begin{aligned}
+\begin{definitionbox}
+    \textbf{Properties of a matrix in RREF (row-reduced echelon form)}
+    \begin{itemize}
+        \item Echelon form
+        \item The leading entry in each row is a 1.
+        \item Each leading 1 is the only nonzero entry in its column.
+    \end{itemize}
+    Example:
+    \[
+    \begin{bmatrix}
+        1 & 0 & 0 & 2 \\
+        0 & 1 & 0 & 3 \\
+        0 & 0 & 1 & 4
+    \end{bmatrix}
+    \]
+    \begin{note}
+        The RREF of a matrix is unique.
+    \end{note}
+\end{definitionbox}
+
+\vspace{20px}
+\definition{Pivot positions}{The positions of the leading 1s in a matrix in RREF. Obviously, \textbf{pivot columns} and \textbf{pivot rows} are the corresponding rows/columns to pivot positions.}
+
+\definition{Free variables}{Variables that are not pivot variables.}
+
+For example, in this augmented matrix:
 \[
-    x_1 & - 2x_2 & + x_3 & = 0 \\
-     & x_2 & + 2x_3 & = 3 \\
-    3x_1 & + x_2 & + 3x_3 & = 3
+    \begin{bmatrix}
+    
+    1 & 0 & 0 & \vert & 3 \\
+    0 & 1 & 2 & \vert & 3 \\
 
+    \end{bmatrix}
 \]
-\end{aligned}
-\definition{Coefficient matrix}{Way of writing a system of linear equations}
+
+$x_1$ and $x_2$ are \textbf{pivot variables}, and $x_3$ is a \textbf{free variable}.
 
 
+\begin{note}
+    If a system of linear equations has \textbf{any} free variables, it has infinitely many solutions.
+\end{note}
 
+\definition{Parametric descriptions of solution sets}{
+    The standard is to use free variables as our parametric variables. If our RREF form looks like:
+    \[
+    \begin{bmatrix}
+        1 & -3 & -4 & \vert & 0 \\
+        0 & 0 & 0 & \vert & 0 \\
+        0 & 0 & 0 & \vert & 0
+    \end{bmatrix}
+    \]
+    then $x_2$ and $x_3$ are free variables, which we'll parameterize and write our solution set as:
+    \[
+    \begin{aligned}
+        x_1 & = 3x_2 + 4x_3 \\
+        x_2 & = x_2 \\
+        x_3 & = x_3
+    \end{aligned}
+    \]
+}
 
+\subsection*{1.3 Vector Equations}
+\definition{Column Vector}{A matrix with only one column. These are expressed as 
+\[
+\textbf{u} = \begin{bmatrix} 3\\-1 \end{bmatrix}
+or\ (3, -1)
+\]}
 
+The geometric visualization of a vector such as $\begin{bmatrix} 3\\1 \end{bmatrix}$ is a vector in the plane from (0,0) to (3,1).
 
+\begin{note}
+    \textbf{Parallelogram Rule for Addition}
+    The sum \textbf{u +v} of two column vectors {\bf u} and {\bf v} is the fouth point of the parallelogram with sides given by {\bf(0,0)}, {\bf u}, and {\bf v}.
+\end{note}
 
+\begin{keyconceptbox}
+    A vector equation
+    \[
+    x_1a_1 + x_2a_2 + \cdots + x_na_n = b\]
+    has the same solution set as the system whose augmented matrix is:
+    \[
+    \begin{bmatrix}
+        a_1 & a_2 & \cdots & a_n & \vert & b
+    \end{bmatrix}
+    \]
+\end{keyconceptbox}
+
+\definition{Span}{The set of all possible linear combinations of a set of vectors. Thus, asking whether a vector \textbf{b} is in the span of a system is the same as asking if the system with b has a solution.}
+
+\subsection*{1.4 The Matrix Equation Ax = b}
+This section is very obvious. If there is an \textit{m} x \textit{n} matrix \textit{A} , then we can write Ax=b, which has the same solution set as the the system whose augmented matrix is 
+$$
+\begin{bmatrix}
+
+    a_{11} & a_{12} & \cdots & a_{1n} & \vert & b_1 \\
+    a_{21} & a_{22} & \cdots & a_{2n} & \vert & b_2 \\
+    \vdots & \vdots & \ddots & \vdots & \vert & \vdots \\
+    a_{m1} & a_{m2} & \cdots & a_{mn} & \vert & b_m
+\end{bmatrix}$$
+
+\begin{definitionbox}
+
+    \textbf{The following are logically equivalent}
+    \begin{itemize}
+        \item For each b in $\mathbb{R}^m$, the equation Ax=b has a solution.
+        \item Each b in $\mathbb{R}^m$ is a linear combination of the columns of A.
+        \item The columns of A span $\mathbb{R}^m$.
+        \item A has a pivot position in every row.
+    \end{itemize}
+\end{definitionbox}
 
 
 
