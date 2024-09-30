@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1727726011.60436 "/Users/roylee0912/Development/math/LinearAlgebra/notes.tex" "notes.pdf" "notes" 1727726012.16536 0
-  "/Users/roylee0912/Development/math/LinearAlgebra/notes.tex" 1727726011.42246 7255 1762947865ed1b65d37e2ba3642c3055 ""
+["pdflatex"] 1727735769.69664 "/Users/roylee0912/Development/math/LinearAlgebra/notes.tex" "notes.pdf" "notes" 1727735770.25107 0
+  "/Users/roylee0912/Development/math/LinearAlgebra/notes.tex" 1727735769.59166 14027 6157734ffe9ac3e7873d6a7acb36c86b ""
   "/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/tfm/jknappen/ec/tcrm1200.tfm" 1136768653 1536 74b7293ec3713bb7fdca8dd1bd1f469c ""
@@ -134,8 +134,7 @@
   "/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1727679113.33493 5467645 128b85b7cde5f5edc5cb7f1dd7ff8736 ""
   "/usr/local/texlive/2024/texmf-var/web2c/pdftex/pdflatex.fmt" 1727679063 8221430 a2bd11431345bcea0d66b0d2617d111f ""
   "/usr/local/texlive/2024/texmf.cnf" 1710266656 577 e590dabc9e28c5b61546e15f63eebcdf ""
-  "notes.aux" 1727726012.11562 154 f68e349a6af13d303aff80c4c449abc1 "pdflatex"
-  "notes.tex" 1727726011.42246 7255 1762947865ed1b65d37e2ba3642c3055 ""
+  "notes.aux" 1727735770.20161 154 017e45e6dc4aa8e83a06f5262773fb64 "pdflatex"
   (generated)
   "notes.aux"
   "notes.log"

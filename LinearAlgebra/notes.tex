@@ -1,4 +1,3 @@
-
 \documentclass[12pt]{article}
 
 \usepackage[utf8]{inputenc}
@@ -43,7 +42,7 @@
 \newcommand{\easy}[1]{\noindent\textcolor{OliveGreen}{\textbf{EASY:}} #1 \par}
 \newcommand{\medium}[1]{\noindent\textcolor{orange}{\textbf{MEDIUM:}} #1 \par}
 \newcommand{\hard}[1]{\noindent\textcolor{red}{\textbf{HARD:}} #1 \par}
-
+\newcommand{\example}[1]{\noindent\textcolor{black}{\textbf{EXAMPLE:}} #1 \par}
 
 % Custom command for a definition which will be bolded
 \newcommand{\definition}[2]{
@@ -237,7 +236,218 @@ $$
     \end{itemize}
 \end{definitionbox}
 
+\subsection* {1.5 Solution Sets of Linear Systems}
+\definition{Homogeneous Linear Systems}{A system is homogeneous if it can be written in the form \textit{Ax=0}, where 0 is the zero vector in $\mathbb{R}^m$}.
+\begin{note}
+    The homogeneous equation \textit{Ax=0} has a \textbf{nontrivial solution} if and only if the equation has \textbf{at least one free variable}
+\end{note}
+
+\example{Determine whether the following system is consistent. If so, describe the solution set.}
+\[
+    \begin{aligned}
+        3x_1 & + 5x_2 & -4_3 & = 0 \\
+        -3x_1    &  - 2x_2 & +4x_3 & = 0 \\
+        6x_1 & + x_2 &  -8x_3 & = 0
+    \end{aligned}
+\]
+Reduce it part way to get to this echelon form:
+
+\[
+\begin{bmatrix}
+    3 & 5 & -4 & \vert & 0 \\
+    0 & 3 & 0 & \vert & 0 \\
+    0 & 0 & 0 & \vert & 0
+    
+\end{bmatrix}\]
+Notice $x_3$ is free, so this homogeneous system of equations has a free variable at $x_3$, which means there is a nontrivial solution.
+\newline
+Reduce it further to get 
+\[
+\begin{bmatrix}
+    1 & 0 & -\frac{4}{3} & \vert& 0\\
+    0 & 1 & 0 & \vert&0\\
+    0 & 0 & 0 &\vert& 0
+\end{bmatrix}
+\]
+Now, you can rewrite this as the general solution, which is shown below
+\begin{keyconceptbox}
+    \textbf{General solution to a system of linear equations (example)}
+    \[
+        \textbf{x} = \begin{bmatrix}x_1\\x_2\\x_3\end{bmatrix} =  \begin{bmatrix}\frac{4}{3}x_3\\0\\x_3\end{bmatrix} = x_3\begin{bmatrix}\frac{4}{3}\\0\\1\end{bmatrix} 
+    \]
+    We'll factor out the $x_3$ to get the general solution, and this will extend later on to all the other variables, as well as constants, which you'll see later.
+\end{keyconceptbox}
+
+\definition{Nonhomogeneous Systems}{These are systems that are not of the form $Ax=0$, but of the form $Ax=b$ where \(b \neq 0\)}
+If we had an example of a nonhomogeneous system, the general solution might be writtten in the form:
+
+\[
+    \begin{bmatrix}
+        x_1\\x_2\\x_3
+    \end{bmatrix} =
+    \begin{bmatrix}
+        -1 + \frac{4}{3}x_3\\2\\x_3
+    \end{bmatrix}
+     = 
+     \begin{bmatrix}
+         -1\\2\\0
+    \end{bmatrix} + x_3
+    \begin{bmatrix}
+        \frac{4}{3}\\0\\1
+    \end{bmatrix}
+\]
+
+\begin{note}
+    The solution set of $Ax=b$ is the set of all vectors of the form $w=p+v_h$ where $v_h$ is the solution of the homogeneous equation $Ax=0$.
+\end{note}
 
 
+\subsection*{1.6 Applications of Systems of Linear Equations}
+TLDR: we use systems of linear equations for a lot of irl things.
+
+\subsection*{1.7 Linear Independence}
+
+\begin{definitionbox}
+    \textbf{Linear Independence}
+    \begin{itemize}
+        \item  A set of vectors is \textbf{linearly independent} if the only solution to the equation $c_1v_1 + c_2v_2 + \cdots + c_kv_k = 0$ is $c_1=c_2=\cdots=c_k=0$.
+        \item The set ${v_1,v_2,\cdot,v_p}$ is said to be \textbf{linearly dependent} if there exists weights $c_1,c_2,\cdots,c_p$ \textbf{not all zero} such that $c_1v_1+c_2v_2+\cdots+c_pv_p=0$.  
+    \end{itemize}
+   
+\end{definitionbox}
+\vspace{20px}
+\example{Determine whether the following set of vectors is linearly independent}
+\[
+    v_1 = \begin{bmatrix}
+    
+        1 \\ 2 \\ 3
+    \end{bmatrix}
+    v_2 = \begin{bmatrix}
+        4\\5\\6
+    \end{bmatrix}
+    v_3 = \begin{bmatrix}
+        2\\1\\0
+    \end{bmatrix}
+\]
+\solution
+We must determine if there is a nontrivial solution. Row operations on the associated augmented matrix show that
+\[
+\begin{bmatrix}
+1 & 4 & 2 & \vert & 0\\
+2 & 5 & 1 & \vert & 0\\
+3 & 6 & 0 & \vert & 0
+\end{bmatrix}=
+\begin{bmatrix}
+1 & 4 & 2 & \vert & 0\\
+0 & 1 & 1 & \vert & 0\\
+0 & 0 & 0 & \vert & 0
+\end{bmatrix}
+\]
+\begin{keyconceptbox}
+    $x_3$ is free, meaning there are infinite solutions and there exists a nontrivial solution.
+    \textbf{Thus, the set of vectors is linearly dependent.}
+
+\end{keyconceptbox}
+
+\vspace{20px}
+
+\example{For the above example, find a linear dependence relation among $v_1$, $v_2$, and $v_3$}
+\solution
+To find a linear dependence relation, completely row reduce and write the new system.
+
+\[
+\begin{bmatrix}
+    1 & 0 & -2 & \vert & 0\\
+    0 & 1 & 1 & \vert & 0\\
+    0 & 0 & 0 & \vert & 0
+    \end{bmatrix}
+ =
+\begin{aligned}
+    x_1 & \phantom{x_2} & - 2x_3 & = 0 \\
+    \phantom{x_1} & x_2 &  + x_3 & = 0\\
+    \phantom{x_1} & \phantom{x_2} & 0 & = 0
+\end{aligned}
+\]
+\begin{keyconceptbox}
+    \textbf{Linear dependence relation}
+    \newline
+    \newline
+    Thus, $x_1 = 2x_3$ and $x_2 = -x_3$. We can write this as one of infinitely many linear dependence relation:
+\[
+    10v_1 - 5v_2 + 5v_3 = 0
+\]
+
+Note that linear dependence relations are always of the form:
+\[
+    c_1v_1 + c_2v_2 + \cdot + c_pv_p = 0
+\]
+\end{keyconceptbox}
+
+\begin{keyconceptbox}
+    \definition{Linear independence of matrix columns}{Suppose we begin with a matrix 
+    \[A=\begin{bmatrix}
+        a_1 & a_2 & \cdots & a_n
+    \end{bmatrix}\]}
+    The columns of matrix A are \textbf{linearly independent} if and only if the equation $Ax=0$ has \textit{only} the trivial solution.
+    \newline
+    \newline
+    OR
+    \newline
+    \newline
+    Linear independence means there are \textbf{no free variables} in $Ax=0$
+\end{keyconceptbox}
+
+\example{Determine if the columns of the matrix $A=\begin{bmatrix}
+    0 & 1 & 4 \\
+    1 & 2 & -1 \\
+    5 & 8 & 0
+\end{bmatrix}$ are linearly independent}
+\solution
+Row reduce it a bit \[
+\begin{bmatrix}
+    1 & 2 & -1 & 0\\
+    0 & 1 & 4 & 0\\
+    0 & 0 & 13 & 0
+\end{bmatrix}
+\]
+Observe there are \textbf{no free variables}, so the equation \textbf{$Ax=0$ has only the trivial solution}, and the columns of A are linearly independent.
+
+\definition{Linear independence of a single vector}{
+    A set containing only one vector $v$ is linearly independent if and only if $v \neq 0$.
+}
+
+\example{
+    Determine if the following set of vectors is linearly independent:
+    \[
+        v_1 = \begin{bmatrix}
+            3\\1
+        \end{bmatrix}
+        v_2 = \begin{bmatrix}
+            6\\2
+        \end{bmatrix}
+    \]
+}
+\solution
+Notice that $v_2$ is a multiple of $v_1$ and thus, the set is linearly dependent.
+\newline
+\newline
+Alternatively, notice that if we wrote this as an augmented matrix of the form $Ax=0$, we'd have $
+\begin{bmatrix}
+    3 & 1 & \vert & 0\\
+    6 & 2 & \vert & 0
+\end{bmatrix}$
+
+which would simplify to $\begin{bmatrix}
+    1 & \frac{1}{3} & \vert & 0\\
+    0 & 0 & \vert & 0
+\end{bmatrix}$
+giving us the free variable $x_2$, thus linear dependence.
+
+\begin{note}
+    If a set $S={v_1,v_2, ... ,v_p}$ in $\mathbb{R}^m$ contains the zero vector, then the set is linearly dependent.
+    \newline
+    \newline
+    If a set contains more vectors than there are entires in each vector, then the set is linearly independent.
+\end{note}
 
 \end{document}
